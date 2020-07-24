@@ -1,0 +1,82 @@
+local time = tick()
+-- xorfish - the most shittiest encryption humanity ever saw
+-- it may be "uncrackable" when encrypting, but it is a pain in the ass to use and pointless to sell
+-- this is distributed under GNU GPL v3 license (upgrade, modify and use the code, however not distributing closed source XORfish versions)
+-- note: XORfish is Synapse X only (because of syn crypt library and other bullshittery) and is only able to be executed as a Roblox script
+local XOR = {}
+if not syn then
+    assert(syn, "Synapse not injected, thus XORfish won't load.")
+end
+local enc1 = syn.crypt.custom.encrypt(
+    "bf-cfb",
+    "",
+    "كԔԠዢولوا تكس በደ",
+    "rû–as")
+local enc2 = syn.crypt.custom.encrypt(
+    "bf-ofb",
+    "blowfish just got raped",
+    "كԖԔԠዢዄዠ₩฿₪لوا ت",
+    "rû–as")
+local enc3 = syn.crypt.custom.encrypt(
+    "bf-cbc",
+    "have fun decrypting the alphabet LOL",
+    " ا تكسا يمكن฿₪لوا ت",
+    "rû–as")
+local key1 = "كԔԠዢولوا تكس በደ"
+local key2 = "كԖԔԠዢዄዠ₩฿₪لوا ت"
+local key3 = "ا تكسا يمكن฿₪لوا ت"
+local key4 = "ك الذين سير ما لا يمكن ت"
+local key5 = "يع الخطاة ، بمنى سىناپ بېقىڭيمكن تصدعهӁӃҩԖԔԠዢዄዠ₩฿ت"
+local key6 = " الذين سير ما لا يمكن ت ӁӃҩԖԔԠዢዄዠ₩฿ت"
+local key7 = "، بما في ذلك أا تكسيرकोशिश करने की कल्पना करो ما لا يمكن تصدعه"
+local key8 = "ك الذين حاولويمكن฿₪لييمكن฿مكن฿يمكن฿₪لييمكن฿مكن฿₪لا تكسير ما ل"
+local key9 = "ذين حاولوا"
+local key10 = "ا يمكن฿₪ليمكن฿تكس"
+function XOR:CopyEncryptedCodeToClipboard()
+local f = "ABCDEFGHIJKLMNOPRSTUVWXYZabcdefghijklmnoprstuvwxyz1234567890!@#$%^&*()_-+=}]{[':;.>,</?~'يغفر الله لجميع الخطاة ، بما في ذلك أولئك الذين حاولوا تكسير ما لا يمكن تصدعهӁӃҩԖԔԠዢዄዠ₩฿₪Σወደ ሥነምግባር ቤቱ እንኳን በደህና መጡ። ልጆቹን ለአምላካችን የምንሠዋ𝔁𝓾𝓮𝓱𝓾𝓪𝓹𝓲𝓪𝓸𝓹𝓲𝓪𝓸𝓫𝓮𝓲𝓯𝓮𝓷𝓰𝔁𝓲𝓪𝓸𝔁𝓲𝓪𝓸በት ቦታ ይህ ነው ፡፡ እውነተኛው አዳኝ እግዚአብሔር እንደሆነ እናምናለን እናም ከዘላለማዊ ሲኦል ያድናልጆይ ጃን የሙከራ ርዕሰ ጉዳይ የገቢያ ነፃነት ፖሊስ እኔ አህያውን ይበላሉ እጠላሃለሁ ላላችህ ሳቅጆይ ጃን የሙከራ ርዕሰ ጉዳይ የገቢያ ነፃነት ፖሊስ እኔ አህያውን ይበላሉ ਮੈਂ ਕਾਲੀ ਲੀਨਕਸ ਬਾਈਨਰੀ ਸੋਰਸ ਕੋਡ ਚਾਹੁੰਦਾ ਹਾਂ! እጠላሃለሁ ላላችህ ሳቅ ፡፡"
+local function generate(digits, text)
+    local g = text
+    local enc1 = syn.crypt.custom.encrypt(
+    "bf-cbc",
+    text,
+    "الذين سير ما",
+    "rû–as")
+    syn.crypt.encrypt(syn.crypt.encrypt(text, key2..key1..key8), syn.crypt.encrypt(key8, key8..key9))
+        for _ = 1, digits do
+            local i = math.random(1, #f)
+            g = g..f:sub(i, i)
+        end
+        text = enc1..enc2
+        return g
+    end
+    local function generatenumber(number)
+            local t = "enter text here"
+            local a
+        for _ = 1, number do
+        function a()
+            for v = 1,5 do -- this is where the fun begins; encrypts crypt encrypt and bashes the keys close each other so it's a pain in the ass to reverse engineer
+            string.gsub(
+            syn.crypt.encrypt(syn.crypt.encrypt(t, key3..key4..key5..key6), key3..key10),
+            syn.crypt.encrypt(f, syn.crypt.encrypt(key5, key7..key5)),
+            syn.crypt.encrypt(t, syn.crypt.encrypt(key7, key3))..syn.crypt.encrypt(f, enc3)
+            )
+            end
+        end
+        a()
+        t = enc1
+        setclipboard(generate(1992, t)) -- t is the text, "1992" is the character amount
+        end
+    end
+    print("Encrypted successfully in " .. time / tick() .. " second(s)")
+    generatenumber(1)
+    local hint = Instance.new("Hint", game.Workspace)
+    hint.Text = "Copied encrypted text to clipboard!"
+    wait(5)
+    hint:Destroy()
+end
+function XOR:Decrypt(text, data)
+    -- soon 
+    -- as of 24th July 2020, no decryption tool was found for XORfish and I hope it wouldn't stay that
+    print "soon"
+end
+XOR:CopyEncryptedCodeToClipboard()
